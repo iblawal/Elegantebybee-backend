@@ -6,7 +6,7 @@ env = environ.Env()
 BASE_DIR = Path(__file__).resolve().parent.parent
 environ.Env.read_env(BASE_DIR / '.env')
 
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY',default='temporary-build-key')
 DEBUG = env.bool('DEBUG', default=True)
 ALLOWED_HOSTS = ['*']
 
@@ -104,8 +104,8 @@ DEFAULT_FROM_EMAIL = env('EMAIL_HOST_USER', default='')
 NOTIFY_EMAIL = env('NOTIFY_EMAIL', default='')
 
 # Stripe & Paystack
-STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
-PAYSTACK_SECRET_KEY = env('PAYSTACK_SECRET_KEY')
+STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY', default='')
+PAYSTACK_SECRET_KEY = env('PAYSTACK_SECRET_KEY', default='')
 
 # REST Framework
 REST_FRAMEWORK = {
